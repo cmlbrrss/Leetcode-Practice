@@ -1,4 +1,6 @@
-## My Ans 
+"""
+My First Ans
+"""
 class Solution(object):
     def pal_judge(self, pal):
         if pal == pal[ : :-1]:
@@ -30,3 +32,30 @@ class Solution(object):
                     max_pal = pal
         return max_pal
 
+"""
+Better Solution (600ms)
+"""
+def longestPalindrome(self, s):
+            """
+            :type s: str
+            :rtype: str
+            """
+            max_pal = ''
+            for n in range(len(s)): #有中心的回文(回文長度為odd)，如'aba'
+                i = j = n
+                while ((i >= 0 and j < len(s)) and s[i] == s[j]): #由第n個字母向字首和字尾延伸，前半確保不會string out of range，後半判斷回文
+                    pal = s[i:j+1]
+                    i -= 1
+                    j += 1
+                max_pal = max(max_pal, pal, key=len)
+
+            for n in range(len(s)): #無中心的回文(回文長度為even)，如:'aa'
+                i = n
+                j = n + 1
+                while ((i >= 0 and j < len(s)) and s[i] == s[j]): 
+                    pal = s[i:j+1]
+                    i -= 1
+                    j += 1
+                max_pal = max(max_pal, pal, key=len)
+
+            return max_pal
