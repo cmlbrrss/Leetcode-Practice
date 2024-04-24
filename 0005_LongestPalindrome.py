@@ -1,11 +1,10 @@
 ## My Ans 
 class Solution(object):
     def pal_judge(self, pal):
-        l = len(pal)
-        for i in range(int(l/2)):
-            if pal[i] != pal[l-i-1]:
-                return False
-        return True
+        if pal == pal[ : :-1]:
+            return True
+        else:
+            return False
 
     def longestPalindrome(self, s):
         """
@@ -13,19 +12,21 @@ class Solution(object):
         :rtype: str
         """
         max_pal = ''
-        if len(s) == 1:
+        if len(s) == 1:  ## s長度 = 1
             max_pal = s
         for i in range(len(s)-1, 0, -1):
             pal_int = s[i]
-            sts = [idx for idx,char in enumerate(s) if char == pal_int]
-            for st in sts:
-                if len(sts) == 1: #無回文
-                    pal = pal_int
-                else:
-                    pal = s[st:i+1] 
+            st = s.find(pal_int)
+            if st == -1 : #無字尾,必無回文
+                pal = pal_int
+            else: #有字尾
+                sts = [idx for idx, letter in enumerate(s) if letter == pal_int]
+                for st in sts:
+                    pal = s[st:i+1]
                     judge = self.pal_judge(pal)
-                    if judge:                        
+                    if judge: #有回文
                         break
-            if len(pal) > len(max_pal):
-                max_pal = pal
+                if len(pal) > len(max_pal):
+                    max_pal = pal
         return max_pal
+
