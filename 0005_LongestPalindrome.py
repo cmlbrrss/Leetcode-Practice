@@ -59,3 +59,28 @@ def longestPalindrome(self, s):
                 max_pal = max(max_pal, pal, key=len)
 
             return max_pal
+
+"""
+Best Solution
+"""
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        if s == s[ : : -1] :
+            return s
+        
+        start, size = 1,0
+        for i in range (1,len(s)):
+            start,r = i-size,i+1  #l為回文頭, r回文尾(第i個字)
+            s1,s2 = s[start-1:r],s[start:r] # s2 = [第i-size 到 第i]。若size = 0，則 s2 = [第i 到 第i]    i,size,start,r  (1,0,1,2),(2,1,1,2) 
+            if l-1 >=0 and s1 == s1[::-1]:  
+                start,size = start-1,size+2
+            elif s2 == s2[::-1]: # 回文頭更新為i，size更新為1
+                start,size = start,size+1
+                
+        return s[start : start + size]
+        
+        
