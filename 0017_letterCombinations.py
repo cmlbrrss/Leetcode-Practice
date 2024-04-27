@@ -1,6 +1,8 @@
 """
 My ans
-要領為使用nested loop去控制迴圈要疊幾次
+重點:
+1.使用nested loop去控制迴圈要疊幾次
+2.以str[:-1]去達到回溯的動作(抵銷該輪圈)
 """
 class Solution(object):
     def __init__(self):
@@ -38,3 +40,36 @@ class Solution(object):
         self.nested_loop(gl, 0, tt_digit)
 
         return self.ans
+"""
+Better ans
+"""
+class Solution(object):
+    def letterCombinations(self, digits):
+        if digits == "":
+            return []
+
+        numbers = {
+            '2' : "abc",
+            '3' : "def",
+            '4' : "ghi",
+            '5' : "jkl",
+            '6' : "mno",
+            '7' : "pqrs",
+            '8' : "tuv",
+            '9' : "wxyz",
+        }
+
+        res = [""]
+
+        for x in digits:
+            string = numbers[x]
+            new_res = []
+            for y in res:
+                for z in string:
+                    new_res.append(y+z)
+            
+            res = new_res
+        
+        return res
+
+        
