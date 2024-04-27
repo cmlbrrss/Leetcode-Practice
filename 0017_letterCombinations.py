@@ -42,6 +42,11 @@ class Solution(object):
         return self.ans
 """
 Better ans
+1.把每一個解的每一位數依序發給每一個解作合併
+  a->ad
+   ->ae
+   ->af
+  b...
 """
 class Solution(object):
     def letterCombinations(self, digits):
@@ -60,13 +65,13 @@ class Solution(object):
         }
 
         res = [""]
-
-        for x in digits:
-            string = numbers[x]
+                                #ex:[2,3,4] 
+        for x in digits:        
+            string = numbers[x] # string = abc, def
             new_res = []
-            for y in res:
-                for z in string:
-                    new_res.append(y+z)
+            for y in res:     # res = '', a b c
+                for z in string: 
+                    new_res.append(y+z) # new_res = a b c, ad ae af bd...
             
             res = new_res
         
