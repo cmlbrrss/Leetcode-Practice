@@ -42,11 +42,8 @@ class Solution(object):
         return self.ans
 """
 Better ans
-1.把每一個解的每一位數依序發給每一個解作合併
-  a->ad
-   ->ae
-   ->af
-  b...
+1.把每一位數(digits)的每個字母(z)，加給上一輪迴圈的結果(若是第一個迴圈則為none)
+  res = '' --> 'a,b,c' --> 'ad,ae,af,bd...' --> 'adg, adh, adi, bdg...'
 """
 class Solution(object):
     def letterCombinations(self, digits):
