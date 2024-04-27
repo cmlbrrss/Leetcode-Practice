@@ -42,7 +42,7 @@ class Solution(object):
         return self.ans
 """
 Better ans
-1.把每一位數(digits)的每個字母(z)，加給上一輪迴圈的結果(若是第一個迴圈則為none)
+1.把每一位數(digits)的每個字母(z)，加給上一輪迴圈的結果(res)，若是第一個迴圈則為none，再結果(res)更新為相加完之後的所有新結果
   res = '' --> 'a,b,c' --> 'ad,ae,af,bd...' --> 'adg, adh, adi, bdg...'
 """
 class Solution(object):
