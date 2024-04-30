@@ -20,7 +20,7 @@ class Solution(object):
                 d = nums[r]
                 if a + b + c + d == target:
                     self.ans.append([a, b, c, d])
-                    while l < r and c == nums[l + 1]:
+                    while l < r and c == nums[l + 1]: #跳過相同的c，因為a、b固定，c、d數對也固定
                         l += 1
                     while l < r and d == nums[r - 1]:
                         r -= 1
