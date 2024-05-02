@@ -3,7 +3,8 @@ Linked List(鏈結串列)
 
 1. Node資料型態、記憶體大小不必相同
 2. 只能做循序存取 (Sequential access)
-3. 有head(第一個node)、tail(最後一個node)、current(當前node)
+3. 實際上python沒有SingleLinkedList、ListNode要自己宣告
+4. 常用可以宣告有head(第一個node)、tail(最後一個node)、current(當前node)，進行撰寫
 
 圖示:
     (1) -> (2) -> (3) -> NULL
@@ -19,7 +20,8 @@ Linked List(鏈結串列)
         currentNode = self.head
         while 特定位置的否定條件(用ctr找特定位置: ctr != N-1，tail位置可以用None: currentNode.next != None):
             currentNode = currentNode.next
-        (對currentNode.next進行目標操作)               
+        (對currentNode.next進行目標操作)  
+3. 若沒有宣告class SingleLinkedList(包含head、tail等)，一個linkedList的head
 """
 
 class Node:
