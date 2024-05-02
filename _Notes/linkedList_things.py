@@ -15,13 +15,11 @@ Linked List(鏈結串列)
         增加一個Node到尾端: self.tail.next = newNode
         刪除一個Node: self.tail.next = None
 2. 找到鍊表中的特定位置可以使用以下Pattern
-
-    對self.head的部分進行處理
-    
-    currentNode = self.head
-    while 特定位置的否定條件(用ctr找特定位置: ctr != N-1，tail位置可以用None: currentNode.next != None):
-        currentNode = currentNode.next
-    (對currentNode.next進行目標操作)               
+        對self.head的部分進行處理    
+        currentNode = self.head
+        while 特定位置的否定條件(用ctr找特定位置: ctr != N-1，tail位置可以用None: currentNode.next != None):
+            currentNode = currentNode.next
+        (對currentNode.next進行目標操作)               
 """
 
 class Node:
