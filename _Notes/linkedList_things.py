@@ -15,10 +15,13 @@ Linked List(鏈結串列)
         增加一個Node到尾端: self.tail.next = newNode
         刪除一個Node: self.tail.next = None
 2. 找到鍊表中的特定位置可以使用以下Pattern
-    如找到N的位子:
-        N
-    
 
+    對self.head的部分進行處理
+    
+    currentNode = self.head
+    while 特定位置的否定條件(用ctr找特定位置: ctr != N-1，tail位置可以用None: currentNode.next != None):
+        currentNode = currentNode.next
+    (對currentNode.next進行目標操作)               
 """
 
 class Node:
@@ -32,14 +35,14 @@ class SingleLinkedList:
       self.tail = None
 
     def append(self, data):
-      new_node = Node(data)
+      newNode = Node(data)
       
       if self.head == None:       # 如果head為None，此Data為第一個值，設定其為head跟tail(將head跟tail指向new_node)
-        self.head = new_node
-        self.tail = new_node
+        self.head = newNode
+        self.tail = newNode
 
       else:
-        self.tail.next = new_node      # 設定tail的node的next指向new_node
+        self.tail.next = newNode      # 設定tail的node的next指向new_node
         self.tail = self.tail.next     # 在將tail的指向new_node
 
     def delete(self):
@@ -49,26 +52,26 @@ class SingleLinkedList:
             if len(self) == 1:    # Linked List只有一個值
                 self.head = None
             else:
-                current_node = self.head
-                while current_node.next != None: # 只要當前下一個的node有值
-                    self.tail = current_node     # tail就繼續指向當前node，最終目的為將tail指向倒數第二個node，才能用self.tail.next = None
-                    current_node = current_node.next  # 當前node就繼續指向下一個node
+                currentNode = self.head
+                while currentNode.next != None: # 只要當前下一個的node有值
+                    self.tail = currentNode     # tail就繼續指向當前node，最終目的為將tail指向倒數第二個node，才能用self.tail.next = None
+                    currentNode = currentNode.next  # 當前node就繼續指向下一個node
                 self.tail.next = None # 刪除最後的Node
 
-    def insert(self, index, data):
-        new_node = Node(data)
-        if index == 0:    #插入第0個
-            new_node.next = self.head     # 設置新node的下一個為現在的head
-            self.head = new_node          # 設置新node為現在的head
+    def insert(self, idx, data):
+        newNode = Node(data)
+        if idx == 0:    #插入第0個
+            newNode.next = self.head     # 設置新node的下一個為現在的head
+            self.head = newNode          # 設置新node為現在的head
         
-        if index > 0 and index < len(self):    # 確定不會out of range且不是第0個
-            current_node = self.head           # current指向head
-            current_index = 1
-            while current_index != index:         
-                current_node = current_node.next    # current指向下一個node，目的是將currentNode指向第N-1個Node，才能使用current_node.next = new_node
-                current_index += 1
-            new_node.next = current_node.next     # 先將指定位置後的所有Node接到新Node上
-            current_node.next = new_node          # 再將currentNode的下一個指向new_node
+        if idx > 0 and idx < len(self):    # 確定不會out of range且不是第0個
+            currentNode = self.head           # current指向head
+            currentIdx = 1
+            while currentIdx != index:         
+                currentNode = currentNode.next    # current指向下一個node，目的是將currentNode指向第N-1個Node，才能使用current_node.next = new_node
+                currentIdx += 1
+            newNode.next = currentNode.next     # 先將指定位置後的所有Node接到新Node上
+            currentNode.next = newNode          # 再將currentNode的下一個指向new_node
                 
             
             
