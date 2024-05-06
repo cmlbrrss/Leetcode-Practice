@@ -1,3 +1,7 @@
+"""
+My Ans
+題目:給予一個數列與一個指定目標數，使用原地演算法
+"""
 class Solution(object):
     def removeElement(self, nums, val):
         """
